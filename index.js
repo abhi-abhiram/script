@@ -1,5 +1,14 @@
 const axios = require('axios');
 const fs = require('fs');
+const mongodb = require('mongodb');
+require('dotenv').config();
+
+const { MongoClient } = mongodb;
+
+const client = new MongoClient(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const queryDate = async (epoch) => {
   try {
@@ -73,7 +82,13 @@ async function main() {
     console.log(`For date ${date} epoch is ${startEpoch} - ${endEpoch}`);
     epochs.push({ date, startEpoch, endEpoch });
   }
-  fs.writeFileSync('epochs.json', JSON.stringify(epochs, null, 2));
+  console.log('completed');
+  // fs.writeFileSync('epochs.json', JSON.stringify(epochs, null, 2));
+  await client.connect();
+  const db = client.db('radix');
+  const collection = db.collection('epochs');
+  await collection.insertMany(epochs);
+  await client.close();
 }
 
 main();
