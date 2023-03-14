@@ -1,0 +1,27 @@
+[
+  {
+    "date": "2021-07-26",
+    "startEpoch": 1,
+    "endEpoch": 1
+  },
+  {
+    "date": "2021-08-11",
+    "startEpoch": 2,
+    "endEpoch": 15
+  },
+  {
+    "date": "2021-08-12",
+    "startEpoch": 16,
+    "endEpoch": 55
+  },
+  {
+    "date": "2021-08-13",
+    "startEpoch": 56,
+    "endEpoch": 97
+  },
+  {
+    "date": "2021-08-14",
+    "startEpoch": 98,
+    "endEpoch": 139
+  }
+]
